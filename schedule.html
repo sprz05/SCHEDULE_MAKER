@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html id="html1">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    
+
+
+
+      <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <script src= 
+"https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"> 
+  </script> 
+
+
+  </head>
+
+
+<header id="CheckSnap" style="display:none;">
+  <h1>Are you sure you're done?</h1>
+  <button onclick="takeshot(); showSnap();" style="width: 200px;">Save schedule with screenshot</button>
+  <a href="index.html"><button style="width: 200px;">Save Schedule as website</button></a>
+  <button onclick="goBackToMain();" style="width: 200px;">No, go back</button>
+</header>
+
+<header id="screenShotHeader" style="display:none;">
+ <h1 id="screenshotTxt">Screenshot:</h1> 
+ <p id="saveSchedTxt">It might take a while for your screenshoot to be displayed. When it's ready, right click to save your schedule:</p>
+ <header id="output" height:></header> 
+</header>
+
+  <script type="text/javascript"> 
+    // Define the function 
+    // to screenshot the div 
+    function takeshot() { 
+      let header = document.getElementById('photo'); 
+
+      // Use the html2canvas 
+      // function to take a screenshot 
+      // and append it 
+      // to the output div 
+      html2canvas(header).then( 
+        function (canvas) { 
+          document 
+          .getElementById('output') 
+          .appendChild(canvas); 
+        }) 
+    } 
+  </script> 
+
+
+  <body>
+
+
+<body id="container">    
+
+<header id="inputAssignments"> 
+<center>   
+<h1 id="mulAsi">Input Your Assignments for the week:</h1>
+<h1 style="display:none" id="oneAsi">Input Your Assignment:</h1>
+
+    <input id="input" placeholder="1-3 math worksheet">
+    <button class="btn btn-primary" id="blue" onclick="addElement()" >Add Assignment</button> 
+
+    <button style="display:none" id="blue2" onclick="addElement();" >input</button> 
+
+    <h1 height="30px"></h1>
+
+  <button id ="next" onclick="showSchedule()">Next</button>
+
+  <button class="btn btn-danger" id="closeAddAssignmentBtn" onclick="closeInputA();" style="display:none">Close</button>
+
+  <center>
+<img src="https://docs.google.com/drawings/d/e/2PACX-1vSMsuI6Xo_xVRKBKcTa_LsYjlXEPe_zlH9kdbGMb8phejW9m4MZdpci1hSob-bq03bXkGGTNKT2YtJ0/pub?w=200&amp;h=200">
+</center>
+</center>
+</header>
+
+<header id="schedule" style="display:none">
+
+
+<header id="editConsole">
+  <button class="btn btn-danger" id="delBtn" style="display:none">Delete</button>
+  <button class="column btn btn-info" style="width:100px; height: 100px;" id="addAssignmentBtn" onclick="showInputA();">Add Assignment</button>
+<button class="column btn btn-success" id="doneBtn" style="color: white; width:100px; height: 100px;" onclick="set(); checkSnap()">Done</button>
+<p class="column" id="trash" style="width:100px; height:100px; background-color:red; text-align: center; color:white">
+Drag assignments here to delete them
+</p>
+</header>
+
+
+<div style="height:100px;"></div>
+
+<center>
+<header id="editHeader" style="display:none">
+  <p>Edit:</p>
+  <button id="editTxt">Edit Text</button>
+  <br>
+  <p>Edit color:</p>
+  <button class="red" id="redBg">Red</button>
+  <button class="blue2" id="blueBg">Blue</button>
+  <button class="green" id="greenBg">Green</button>
+  <button class="blue" id="purpleBg">Purple</button> 
+  <button onclick="setStorage()">Close</button>
+</header>
+</center>
+
+<center>
+<header id="editTDHeader" style="display:none">
+  <p>Edit:</p>
+  <button id="editTDTxt">Edit Text</button>
+  <br>
+  <p>Edit color:</p>
+  <button class="red" id="redBgTD">Red</button>
+  <button class="blue2" id="blueBgTD">Blue</button>
+  <button class="green" id="greenBgTD">Green</button>
+  <button class="blue" id="purpleBgTD">Purple</button> 
+  <button onclick="closeEditHTD()">Close</button>
+</header>
+</center>
+
+    <p>Now make your schedule for the week!</p>
+    <ul>
+      <li>Order your assignments by draging them to the time you'd like to do them.</li>
+      <li>Double click the time cells to edit the time</li>
+      <li>Double click your assignment to edit it, drag it to the delete square to delete</li>
+    </ul>
+
+</body> 
+
+<center>
+<header id="photo"> 
+
+<table border="1" style="border-color: grey;" id="tbUser">
+<tr>
+<th width=100>Time</th>
+    <th width=100>Monday</th>
+    <th width=100>Tuesday</th>
+    <th width=100>Wednesday</th>
+    <th width=100>Thursday</th>
+    <th width=100>Friday</th>
+  </tr>
+    <tr>
+<th class="th" width=100>12:00 PM</th>
+    <td width=100 id="cell1" value="cool"></td>
+    <td width=100></td>
+    <td width=100></td>
+    <td width=100></td>
+    <td width=100></td>
+    <td class="delTr"><button class="btnDelete">Delete</button></td>
+  </tr>
+  <tr>
+    <th class="th" width=100>1:00 PM</th>
+    <td width=100></td>
+    <td width=100></td>
+    <td width=100></td>
+    <td width=100></td>
+    <td width=100></td>
+    <td class="delTr"><button class="btnDelete">Delete</button></td>
+  </tr>
+  <tr>
+    <th class="th" width=100>2:00 PM</th>
+    <td width=100></td>
+    <td width=100></td>
+    <td width=100></td>
+    <td width=100></td>
+    <td width=100></td>
+    <td class="delTr"><button class="btnDelete">Delete</button></td>
+  </tr>
+  <tr>
+    <th class="th" width=100>3:00 PM</th>
+    <td width=100></td>
+    <td width=100></td>
+    <td width=100></td>
+    <td width=100></td>
+    <td width=100></td>
+    <td class="delTr"><button class="btnDelete">Delete</button></td>
+  </tr>
+  <tr>
+    <th  class="th" width=100>4:00 PM</th>
+    <td width=100></td>
+    <td width=100></td>
+    <td width=100></td>
+    <td width=100></td>
+    <td width=100></td>
+    <td class="delTr"><button class="btnDelete">Delete</button></td>
+  </tr>
+  <tr>
+    <th class="th" width=100>5:00 PM</th>
+    <td width=100></td>
+    <td width=100></td>
+    <td width=100></td>
+    <td width=100></td>
+    <td width=100></td>
+    <td class="delTr"><button class="btnDelete">Delete</button></td>
+  </tr>
+  <tr>
+    <th class="th" width=100>6:00 PM</th>
+    <td width=100></td>
+    <td width=100></td>
+    <td width=100></td>
+    <td width=100></td>
+    <td width=100></td>
+    <td class="delTr"><button class="btnDelete">Delete</button></td>
+  </tr>
+</table>
+</header>
+
+</center>
+
+<center><button onclick="addTr()" class="btn btn-info">Add row</button></center>
+
+
+</header>
+
+
+     <script src="script.js"></script>
+
+</header>

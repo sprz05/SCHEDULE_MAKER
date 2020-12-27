@@ -1,0 +1,163 @@
+<html>
+<head>
+  <title></title>
+
+      <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+  <script src= 
+"https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"> 
+  </script> 
+
+<style>
+.btnDelete{
+	display:none;
+}
+</style>
+
+
+  <script src="localStorage.js"></script>
+
+</head>
+<body>
+
+	<body id="container">    
+
+<header id="inputAssignments" style="display:none">    
+<h1 id="mulAsi">Input Your Assignments for the week:</h1>
+<h1 style="display:none" id="oneAsi">Input Your Assignment:</h1>
+
+    <input id="input" type="text" value="text">
+    <button class="blue" id="blue" onclick="addElement()" >Add Assignment</button> 
+    <!--- <button class="red" id="red" onclick="addElement()" >Make it Red</button> 
+    <button class="green" id="green" onclick="addElement()" >Make it Green</button> 
+    <button class="blue2" id="blue2" onclick="addElement()" >Make it Blue</button> --->
+
+
+    <button style="display:none" id="blue2" onclick="addElement();" >input</button> 
+
+    <h1 height="30px"></h1>
+
+  <button id ="next" onclick="showSchedule()">Next</button>
+  <button id="closeAddAssignmentBtn" onclick="closeInputA();" style="display:none">Close</button>
+</header>
+
+<header id="schedule">
+
+
+<header id="editConsole">
+  <button  id="delBtn" style="display:none">Delete</button>
+  <button class="column btn btn-primary" style="width:100px; height: 100px;" id="addAssignmentBtn" onclick="showInputA();">Add Assignment</button>
+<button class="column btn btn-success" style="width:100px; height: 100px;" onclick="set()">Save</button>
+</header>
+
+
+<body style="height:50px;"></body>
+
+<center>
+<header id="editHeader" style="display:none">
+  <p>Edit:</p>
+  <button id="editTxt">Edit Text</button>
+  <br>
+  <p>Edit color:</p>
+  <button class="red" id="redBg">Red</button>
+  <button class="blue2" id="blueBg">Blue</button>
+  <button class="green" id="greenBg">Green</button>
+  <button class="blue" id="purpleBg">Purple</button> 
+  <button onclick="setStorage()">Close</button>
+</header>
+</center>
+
+<center>
+<header id="editTDHeader" style="display:none">
+  <p>Edit:</p>
+  <button id="editTDTxt">Edit Text</button>
+  <br>
+  <p>Edit color:</p>
+  <button class="red" id="redBgTD">Red</button>
+  <button class="blue2" id="blueBgTD">Blue</button>
+  <button class="green" id="greenBgTD">Green</button>
+  <button class="blue" id="purpleBgTD">Purple</button> 
+  <button onclick="closeEditHTD()">Close</button>
+</header>
+</center>
+
+    <p>Order your assignments, double click anything to edit it</p>
+
+</body> 
+
+<script>	
+	$("#tbUser").on('click', '.btnDelete', function () {
+    $(this).closest('tr').remove();
+});
+
+</script>
+
+<header id="tableInIndex">
+</header>
+
+
+</body>
+
+<center><button onclick="addTr()" class="btn btn-info">Add row</button></center>
+
+
+<p id="trash" style="width:100px; height:100px; background-color:red; text-align: center; color:white">
+Drag assignments here to delete them
+</p>
+
+
+<script>
+	window.addEventListener('load', (event) => {
+  getAndSet();
+
+});
+
+function getAndSet(){
+  var table = localStorage.getItem('Table');
+  console.log(table);
+
+  document.getElementById("tableInIndex").innerHTML = table;
+
+
+}
+ function delTr() {
+ 	var closeDelBtn = event.target;
+    $(closeDelBtn).closest('tr').remove();
+}
+</script>
+
+
+<script type="text/javascript" src="edit.js"></script>
+
+<script>
+  $("th").dblclick(function (e) {
+       alert("wow")
+    });
+
+
+function updateVal3(currentEle, value) {
+  $(currentEle).html('<input class="thVal" type="text" value="' + value + '" />');
+  $(".thVal").focus();
+  $(".thVal").keyup(function (event) {
+      if (event.keyCode == 13) {
+          $(currentEle).html($(".thVal").val().trim());
+      }
+  });
+
+  $(document).click(function () { // you can use $('html')
+        $(currentEle).html($(".thVal").val().trim());
+  });
+}
+</script>
