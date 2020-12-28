@@ -28,7 +28,9 @@ divWhite {
 }
 
 
-
+a{
+  cursor: move;
+}
 
 .div {
   text-align: center;

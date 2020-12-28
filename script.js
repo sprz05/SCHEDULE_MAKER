@@ -106,6 +106,7 @@ function addElement() {
 
         selectedText = event.target;
         text = $(selectedText).html();
+        console.log("created div text" + text);
       }
     });
 
@@ -115,12 +116,9 @@ function addElement() {
     $("td").droppable({
       drop: function(event, ui) {
         selectedTD = event.target.id;
-
-        $(this).removeClass();
         var newDiv = $("<div>"+ text +"</div>");
         //$(newDiv).addClass($("#" + currentlyDragged).attr("data-id"));
         $( this ).append(newDiv);
- 
         console.log(currentlyDragged)
 
         $("div").draggable({
@@ -128,12 +126,24 @@ function addElement() {
 
         currentlyDraggedNewDiv = e.target;
         text = $(currentlyDraggedNewDiv).html();
-        console.log(currentlyDraggedNewDiv);
+          
+        
 
       }
     }); 
         $("#" + currentlyDragged).remove();
         $(currentlyDraggedNewDiv).remove();
+        if(currentlyDraggedNewDiv.id == "ITHBLink"){
+          $("#botLinkHeader").append( "<div id='ITHBLink'><a href='https://sprz05.github.io/ITHIB_v1.0/ITHB.html' target='_blank'>Use ITHB</a></div>");
+        } else if( currentlyDraggedDiv.id == "HOBLink"){
+          $("#botLinkHeader").append( "<div id='HOBLink'><a href='https://sprz05.github.io/HOBv1.0/' target='_blank'>Use HOB</a></div>");
+        } else if( currentlyDraggedDiv.id == "SLABLink"){
+          $("#botLinkHeader").append( "<div id='SLABLink'><a href='https://sprz05.github.io/SLAB_v1.0/' target='_blank'>Use SLAB</a></div>");
+        } else if( currentlyDraggedDiv.id == "PHOBLink"){
+          $("#botLinkHeader").append( "<div id='PHOBLink'><a href='https://sprz05.github.io/Project-HOB/' target='_blank'>Use PHOB</a></div>");
+        } else if( currentlyDraggedDiv.id == "BHOBLink"){
+          $("#botLinkHeader").append( "<div id='BHOBLink'><a href='https://sprz05.github.io/ITHIB_v1.0/bingoBot9.html' target='_blank'>Use BHOB</a></div>");
+        }
       }
     });
 
@@ -445,8 +455,5 @@ $("#tbUser").on('click', '.btnDelete', function () {
 
 function set(){
  localStorage.setItem('Table', document.getElementById("photo").innerHTML);
- firstTimeCheck();
 }
-
-
 
