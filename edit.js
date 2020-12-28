@@ -132,15 +132,18 @@ function addElement() {
       }
     }); 
         $("#" + currentlyDragged).remove();
-      }
+      } 
     });
 
   });
 
-  document.getElementById("input").value = " ";
 
+
+  document.getElementById("input").value = " ";
+  checkLink()
 
 }
+
 
 var clickedTH;
 

@@ -265,10 +265,12 @@ function updateVal(currentEle, value) {
       drop: function( event, ui ) {
       for (let i = 0; i < ui.draggable.length; i++) {
         ui.draggable[i].remove();
-      }
+      } 
       
       }
+
     });
+    
   });
 
 
