@@ -18,6 +18,21 @@ var mulAsi = document.getElementById("mulAsi");
 var oneAsi = document.getElementById("oneAsi");
 
 
+  window.addEventListener('load', (event) => {
+    getAndSet();
+});
+
+function getAndSet(){
+  var table = localStorage.getItem('Table');
+  console.log(table);
+
+  document.getElementById("tableInIndex").innerHTML = table;
+}
+
+function set(){
+ localStorage.setItem('Table', document.getElementById("tableInIndex").innerHTML);
+ getAndSet();
+}
 
 
 function showInputA(){
@@ -65,17 +80,7 @@ function addElement() {
   if (classN == "blue") {
     newDiv.classList = "blue"
     newDiv.setAttribute("data-id", "blue"); 
-  } /*else if (classN == "red") {
-    newDiv.classList = "red"
-    newDiv.setAttribute("data-id", "red");
-  } else if (classN == "green") {
-    newDiv.classList = "green"
-    newDiv.setAttribute("data-id", "green");
-  } else if (classN == "blue2") {
-    newDiv.classList = "blue2"
-    newDiv.setAttribute("data-id", "blue2");
-  }*/
-  // and give it some content
+  } 
   var newContent = document.createTextNode(text);
 
   // add the text node to the newly created div
@@ -89,15 +94,6 @@ function addElement() {
 
     var currentlyDragged;
 
-/*
-    $(function() {
-      $("div").dblclick(function(e) {
-        $("#editHeader").css("display", "block");
-        clickedTD = event.target;
-        $(clickedTD).addClass("selected");
-      });
-    });
-*/
 
     $("[id^='temp']").draggable({
       drag: function(e) {
@@ -158,10 +154,9 @@ var clickedTH;
     });
 });
 
-
+//create tr into table
 var tdCounter = 0;
 function addTr() {
-  // create a new div element and give it a unique id
   var newTr = 
   $("<tr><th class='th' width=100>0:00 PM</th><td width='100'></td><td width='100'></td><td width='100'></td><td width='100'></td><td width='100'></td><td class='delTr' onclick='delTr()'><button class='editDel'>Delete</button></td></tr>")
   newTr.id = 'td' + tdCounter;
@@ -182,19 +177,17 @@ function addTr() {
 }
 
 
+//when they click the delte button delets closest tr
+$("#tbUser").on('click', '.btnDelete', function () {
+    $(this).closest('tr').remove();
+});
+
 
 var editTxt = document.getElementById("editTxt");
 var redBg = document.getElementById("redBg");
 var del = document.getElementById("del");
 var clickedTD;
 
-
-
-var div = document.getElementsByTagName("div");
-function closeEditH(){
-  $("#editHeader").css("display","none");
-  $(div).removeClass("selected"); 
-}
 
 //edit text
 
@@ -262,60 +255,6 @@ function updateVal(currentEle, value) {
     });
   });
 
-
-
-
-
-
-var takeScreenShot = function() {
-    html2canvas(document.getElementById("container"), {
-        onrendered: function (canvas) {
-            var tempcanvas=document.createElement('canvas');
-            tempcanvas.width=350;
-            tempcanvas.height=350;
-            var context=tempcanvas.getContext('2d');
-            context.drawImage(canvas,112,0,288,200,0,0,350,350);
-            var link=document.createElement("a");
-            link.href=tempcanvas.toDataURL('image/jpg');   //function blocks CORS
-            link.download = 'screenshot.jpg';
-            link.click();
-        }
-    });
-}
-
-//how can we save it in local storage??????
-var htmlContents = document.getElementById("output");
-
-function save(){
-localStorage.setItem('mySchedule', JSON.stringify(htmlContents ));
-}
-
-function showImgSchedule(){
-localStorage.getItem('mySchedule');
-console.log("showingSchedule")
-}
-//how can we save it in local storage??????
-
-
-
-
-
- /* var td = document.getElementsByTagName('td');
-
-  $( "td" ).hover(
-  function() {
-    $( this ).append( $( "<a class='button'> Delete</a>" ) );
-
-    function dump() {
-      $(this).parent().html("").removeClass();
-    }
-$( "a" ).on( "click", dump );
-
-
-  }, function() {
-    $( this ).find( "a" ).last().remove();
-  }
-);*/
 
 
 var doubleClickedTD;
@@ -398,29 +337,6 @@ $(function () {
 });
 
 
-function showSnap(){ 
-  document.getElementById("saveSchedTxt").style.display ="block";
-  document.getElementById("screenshotTxt").style.display = "block";
-}
-
-
-  function checkSnap(){
-    document.getElementById("editConsole").style.display = "none";
-    document.getElementById("CheckSnap").style.display = "block";
-  }
-
-  function goBackToMain(){
-    document.getElementById("editConsole").style.display = "block";
-    document.getElementById("CheckSnap").style.display = "none";
-  }
-
-   
-
-
-function set(){
- localStorage.setItem('Table', document.getElementById("tableInIndex").innerHTML);
- getAndSet();
-}
 
 window.addEventListener('load', (event) => {
 

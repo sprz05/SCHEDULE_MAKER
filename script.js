@@ -434,7 +434,7 @@ $("#tbUser").on('click', '.btnDelete', function () {
     document.getElementById("CheckSnap").style.display = "block";
   }
 
-  function goBackToMain(){ screenShotHeader
+  function goBackToMain(){ 
     document.getElementById("editConsole").style.display = "block";
     document.getElementById("CheckSnap").style.display = "none";
     document.getElementById("screenShotHeader").style.display = "none";
@@ -445,6 +445,7 @@ $("#tbUser").on('click', '.btnDelete', function () {
 
 function set(){
  localStorage.setItem('Table', document.getElementById("photo").innerHTML);
+ firstTimeCheck();
 }
 
 
