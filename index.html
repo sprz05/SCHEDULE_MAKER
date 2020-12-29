@@ -40,11 +40,13 @@
 <body>
 
 <center>
-<header id="tableInIndex"><header id="makeSched">
+<header id="tableInIndex"></header>
+
+<header id="makeSched">
 <h1>Looks like you haven't made a schedule, want to make your first one?
 </h1>
 <a href="schedule.html"><button class="btn btn-success">Make 1st Schedule</button></a>
-</header></header>
+</header>
 
 <a href="schedule.html"><button class="btn btn-primary" id="newSched">New Schedule</button></a>
 <a href="edit.html"><button class="btn btn-danger" id="editBtn">Edit this schedule</button></a>
@@ -87,14 +89,14 @@
 
 <script>
 
-//for(var i = 0; i>=0; i++){
-  //firstTimeCheck()
-//}
+window.addEventListener('load', (event) => {
+  firstTimeCheck();
+});
 
 
-/*var table = document.getElementById("tableInIndex").innerHTML;
+var table = document.getElementById("tableInIndex").innerHTML;
 function firstTimeCheck(){
-if(table == null || table == ""){
+if(table == null){
   document.getElementById("makeSched").style.display = "block";
   document.getElementById("screenShotBtn").style.display = "none";
   document.getElementById("newSched").style.display = "none";
@@ -104,8 +106,9 @@ if(table == null || table == ""){
   document.getElementById("newSched").style.display = "block";
   document.getElementById("screenShotBtn").style.display = "block";
   document.getElementById("editBtn").style.display = "block";
+  localStorage.setItem('Table', document.getElementById("tableInIndex").innerHTML);
 } 
-}*/
+}
 
 
 
@@ -121,8 +124,5 @@ if(table == null || table == ""){
     document.getElementById("CheckSnap").style.display = "none";
   }   
 
-function set(){
- localStorage.setItem('Table', document.getElementById("tableInIndex").innerHTML);
- getAndSet();
-}
+
 </script>
