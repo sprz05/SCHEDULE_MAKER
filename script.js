@@ -135,13 +135,13 @@ function addElement() {
         $(currentlyDraggedNewDiv).remove();
         if(currentlyDraggedNewDiv.id == "ITHBLink"){
           $("#botLinkHeader").append( "<div id='ITHBLink'><a href='https://sprz05.github.io/ITHIB_v1.0/ITHB.html' target='_blank'>Use ITHB</a></div>");
-        } else if( currentlyDraggedDiv.id == "HOBLink"){
+        } else if( currentlyDraggedNewDiv.id == "HOBLink"){
           $("#botLinkHeader").append( "<div id='HOBLink'><a href='https://sprz05.github.io/HOBv1.0/' target='_blank'>Use HOB</a></div>");
-        } else if( currentlyDraggedDiv.id == "SLABLink"){
+        } else if( currentlyDraggedNewDiv.id == "SLABLink"){
           $("#botLinkHeader").append( "<div id='SLABLink'><a href='https://sprz05.github.io/SLAB_v1.0/' target='_blank'>Use SLAB</a></div>");
-        } else if( currentlyDraggedDiv.id == "PHOBLink"){
+        } else if( currentlyDraggedNewDiv.id == "PHOBLink"){
           $("#botLinkHeader").append( "<div id='PHOBLink'><a href='https://sprz05.github.io/Project-HOB/' target='_blank'>Use PHOB</a></div>");
-        } else if( currentlyDraggedDiv.id == "BHOBLink"){
+        } else if( currentlyDraggedNewDiv.id == "BHOBLink"){
           $("#botLinkHeader").append( "<div id='BHOBLink'><a href='https://sprz05.github.io/ITHIB_v1.0/bingoBot9.html' target='_blank'>Use BHOB</a></div>");
         }
       }
@@ -178,6 +178,7 @@ function addTr() {
 
   // add the newly created element and its content into the table
   $("table").append(newTr)
+  alert("you just added a new row to your table! double click the '0:00' to change it's time");
   $(".th").dblclick(function (e) {
         clickedTH = event.target; 
         e.stopPropagation();
