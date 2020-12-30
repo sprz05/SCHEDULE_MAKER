@@ -40,10 +40,11 @@
 <body>
 
 <center>
+<h1 style="display:none" id="homeworkSchedTitle"><b>Homework Schedule</b></h1>
 <header id="tableInIndex"></header>
 
 <header id="makeSched">
-<h1>Looks like you haven't made a schedule, want to make your first one?
+<h1>Looks like you haven't made a homework schedule, want to make your first one?
 </h1>
 <a href="schedule.html"><button class="btn btn-success">Make 1st Schedule</button></a>
 </header>
@@ -96,7 +97,7 @@ window.addEventListener('load', (event) => {
 
 var table = document.getElementById("tableInIndex").innerHTML;
 function firstTimeCheck(){
-if(table == null || table == ""){
+if(table == null){
   document.getElementById("makeSched").style.display = "block";
   document.getElementById("screenShotBtn").style.display = "none";
   document.getElementById("newSched").style.display = "none";
