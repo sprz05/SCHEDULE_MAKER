@@ -96,7 +96,7 @@ window.addEventListener('load', (event) => {
 
 var table = document.getElementById("tableInIndex").innerHTML;
 function firstTimeCheck(){
-if(table == null){
+if(table == null || table == ""){
   document.getElementById("makeSched").style.display = "block";
   document.getElementById("screenShotBtn").style.display = "none";
   document.getElementById("newSched").style.display = "none";
