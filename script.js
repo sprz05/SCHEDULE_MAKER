@@ -156,15 +156,43 @@ function addElement() {
 
 var clickedTH;
 
-  $(function () {
+/* $(function () {
     $(".th").dblclick(function (e) {
         clickedTH = event.target; 
         e.stopPropagation();
-        var currentEle = $(clickedTH);
+        var currentEleTH = $(clickedTH);
         var value = $(clickedTH).html();
-        updateVal2(currentEle, value);
+        updateVal2(currentEleTH, value);
+    });
+}); */
+
+
+
+$(function () {
+    $(".th").dblclick(function (e) {
+        e.stopPropagation();
+        var currentEle = $(this);
+        var value9 = $(this).html();
+        updateVal9(currentEle, value9);
     });
 });
+
+function updateVal9(currentEle, value9) {
+    $(document).off('click');
+    $(currentEle).html('<input class="thVal9" type="text" value="' + value9 + '" />');
+    $(".thVal9").focus();
+    $(".thVal9").keyup(function (event) {
+        if (event.keyCode == 13) {
+            $(currentEle).html($(".thVal9").val().trim());
+        }
+    });
+
+    $(document).click(function () {
+            $(currentEle).html($(".thVal9").val().trim());
+    });
+}
+
+
 
 
 var tdCounter = 0;
@@ -182,9 +210,25 @@ function addTr() {
   $(".th").dblclick(function (e) {
         clickedTH = event.target; 
         e.stopPropagation();
-        var currentEle = $(clickedTH);
-        var value = $(clickedTH).html();
-        updateVal2(currentEle, value);
+        var currentEle10 = $(clickedTH);
+        var value10 = $(clickedTH).html();
+        updateVal10(currentEle10, value10);
+    });
+}
+
+function updateVal10(currentEle10, value10) {
+
+    $(document).off('click');
+    $(currentEle10).html('<input class="thVal" type="text" value="" />');
+    $(".thVal").focus();
+    $(".thVal").keyup(function (event) {
+        if (event.keyCode == 13) {
+            $(currentEle10).html($(".thVal").val().trim());
+        }
+    });
+
+    $(document).click(function () {
+            $(currentEle10).html($(".thVal").val().trim());
     });
 }
 
@@ -218,7 +262,7 @@ function closeEditH(){
 });
 
 function updateVal(currentEle, value) {
-    $(currentEle).html('<input class="thVal" type="text" value="' +  text  + '" />');
+    $(currentEle).html('<input class="thVal" type="text" />');
     $(".thVal").focus();
     $(".thVal").keyup(function (event) {
         if (event.keyCode == 13) {
@@ -236,7 +280,7 @@ function updateVal(currentEle, value) {
 
 
 function updateVal(currentEle, value) {
-    $(currentEle).html('<input class="thVal" type="text" value="' + " " + '" />');
+    $(currentEle).html('<input class="thVal" type="text"/>');
     $(".thVal").focus();
     $(".thVal").keyup(function (event) {
         if (event.keyCode == 13) {
@@ -277,18 +321,17 @@ function updateVal(currentEle, value) {
 
 
 
-
-function updateVal2(currentEle, value) {
-    $(currentEle).html('<input class="thVal" type="text" />');
+function updateVal2(currentEleTH, value) {
+    $(currentEleTH).html('<input class="thVal" type="text" />');
     $(".thVal").focus();
     $(".thVal").keyup(function (event) {
         if (event.keyCode == 13) {
-            $(currentEle).html($(".thVal").val());
+            $(currentEleTH).html($(".thVal").val());
         }
     });
 
     $(document).click(function () {
-            $(currentEle).html($(".thVal").val());
+            $(currentEleTH).html($(".thVal").val());
     });
 }
 
@@ -373,7 +416,7 @@ function closeEditHTD(){
 });
 
 function updateVal(currentEle, value) {
-    $(currentEle).html('<input class="thVal" type="text" value="' +  text  + '" />');
+    $(currentEle).html('<input class="thVal" type="text" />');
     $(".thVal").focus();
     $(".thVal").keyup(function (event) {
         if (event.keyCode == 13) {

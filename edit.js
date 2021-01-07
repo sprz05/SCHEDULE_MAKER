@@ -147,7 +147,7 @@ function addElement() {
 
 var clickedTH;
 
-  $(function () {
+ /* $(function () {
     $(".th").dblclick(function (e) {
         clickedTH = event.target; 
         e.stopPropagation();
@@ -155,13 +155,43 @@ var clickedTH;
         var value = $(clickedTH).html();
         updateVal2(currentEle, value);
     });
+});*/
+
+
+
+$(function () {
+    $(".th").dblclick(function (e) {
+        e.stopPropagation();
+        var currentEle = $(this);
+        var value9 = $(this).html();
+        updateVal9(currentEle, value9);
+    });
 });
+
+function updateVal9(currentEle, value9) {
+    $(document).off('click');
+    $(currentEle).html('<input class="thVal9" type="text" value="' + value9 + '" />');
+    $(".thVal9").focus();
+    $(".thVal9").keyup(function (event) {
+        if (event.keyCode == 13) {
+            $(currentEle).html($(".thVal9").val().trim());
+        }
+    });
+
+    $(document).click(function () {
+            $(currentEle).html($(".thVal9").val().trim());
+    });
+}
+
+
+
+
 
 //create tr into table
 var tdCounter = 0;
 function addTr() {
   var newTr = 
-  $("<tr><th class='th' width=100>0:00 PM</th><td width='100'></td><td width='100'></td><td width='100'></td><td width='100'></td><td width='100'></td><td class='delTr' onclick='delTr()'><button class='editDel'>Delete</button></td></tr>")
+  $("<tr><th class='th' width=100>0:00 PM</th><td width='100'></td><td width='100'></td><td width='100'></td><td width='100'></td><td width='100'></td><td class='delTr'></td>")
   newTr.id = 'td' + tdCounter;
   newTr.classList = "div";
   tdCounter++
@@ -169,21 +199,46 @@ function addTr() {
   // add the newly created element and its content into the table
   $("table").append(newTr)
 
-    $(".th").dblclick(function (e) {
+   /*(".th").dblclick(function (e) {
         clickedTH = event.target; 
         e.stopPropagation();
         var currentEle = $(clickedTH);
         var value = $(clickedTH).html();
         updateVal2(currentEle, value);
+    });*/
+ alert("you just added a row to your table double click the 0:00 to edit the time")
+ $(".th").dblclick(function (e) {
+        clickedTH = event.target; 
+        e.stopPropagation();
+        var currentEle10 = $(clickedTH);
+        var value10 = $(clickedTH).html();
+        updateVal10(currentEle10, value10);
     });
- // alert("you just added a row to your table double click the 0:00 to edit the time")
 }
 
+function updateVal10(currentEle10, value10) {
+
+    $(document).off('click');
+    $(currentEle10).html('<input class="thVal" type="text" value="" />');
+    $(".thVal").focus();
+    $(".thVal").keyup(function (event) {
+        if (event.keyCode == 13) {
+            $(currentEle10).html($(".thVal").val().trim());
+        }
+    });
+
+    $(document).click(function () {
+            $(currentEle10).html($(".thVal").val().trim());
+    });
+}
+
+ $("#tbUser").on('click', '.btnDelete', function () {
+    //$(this).closest('tr').remove();
+    alert("wow")
+});
 
 //when they click the delte button delets closest tr
-$("#tbUser").on('click', '.btnDelete', function () {
-    $(this).closest('tr').remove();
-});
+
 
 
 var editTxt = document.getElementById("editTxt");
@@ -204,7 +259,7 @@ var clickedTD;
 });
 
 function updateVal(currentEle, value) {
-    $(currentEle).html('<input class="thVal" type="text" value="' +  text  + '" />');
+    $(currentEle).html('<input class="thVal" type="text" />');
     $(".thVal").focus();
     $(".thVal").keyup(function (event) {
         if (event.keyCode == 13) {
@@ -222,7 +277,7 @@ function updateVal(currentEle, value) {
 
 
 function updateVal(currentEle, value) {
-    $(currentEle).html('<input class="thVal" type="text" value="' + " " + '" />');
+    $(currentEle).html('<input class="thVal" type="text"/>');
     $(".thVal").focus();
     $(".thVal").keyup(function (event) {
         if (event.keyCode == 13) {
@@ -259,6 +314,7 @@ function updateVal(currentEle, value) {
   });
 
 
+/*
 
 var doubleClickedTD;
 
@@ -269,7 +325,7 @@ $(function () {
         $("#editTDHeader").css("display","block");       
     });
 });
-
+*/
 
 function closeEditHTD(){
   $("#editTDHeader").css("display","none");

@@ -35,6 +35,12 @@
   div {
   cursor: pointer;
 }
+
+.btnDelete{
+  display:none;
+}
+
+
 </style>
 </head>
 <body>
@@ -49,13 +55,20 @@
 <a href="schedule.html"><button class="btn btn-success">Make 1st Schedule</button></a>
 </header>
 
-<a href="schedule.html"><button class="btn btn-primary" id="newSched">New Schedule</button></a>
+<a href="schedule.html"><button class="btn btn-primary" id="newSched" onclick="alertCarful()">New Schedule</button></a>
 <a href="edit.html"><button class="btn btn-danger" id="editBtn">Edit this schedule</button></a>
 <button id="screenShotBtn" class="btn btn-warning" style="color:white" onclick="takeshot()">Take Screenshot of this schedule</button>
 
+<script>
+  function alertCarful(){
+    alert("Once you save your new schdeule it will restart your current schedule!!")
+  }
+</script>
 
   <center>
 <img src="https://docs.google.com/drawings/d/e/2PACX-1vSMsuI6Xo_xVRKBKcTa_LsYjlXEPe_zlH9kdbGMb8phejW9m4MZdpci1hSob-bq03bXkGGTNKT2YtJ0/pub?w=200&amp;h=200">
+
+
 </center>
 
 </body>

@@ -28,10 +28,10 @@
 
 
 <header id="CheckSnap" style="display:none;">
-  <h1>Are you sure you're done?</h1>
-  <button onclick="takeshot(); showSnap();" style="width: 200px;">Save schedule with screenshot</button>
-  <a href="index.html"><button style="width: 200px;">Save Schedule as website</button></a>
-  <button onclick="goBackToMain();" style="width: 200px;">No, go back</button>
+  <h1>Sweet! How would you like to save your schedule?</h1>
+  <button onclick="takeshot(); showSnap();" class="btn btn-success" style="width: 200px;">Save schedule with screenshot</button>
+  <a href="index.html"><button style="width: 200px;"  class="btn btn-primary">Save Schedule as website</button></a>
+  <button onclick="goBackToMain();" style="width: 200px;"  class="btn btn-danger">No, go back</button>
 </header>
 
 <header id="screenShotHeader" style="display:none;">
@@ -67,13 +67,15 @@
 
 <header id="inputAssignments"> 
 <center>   
-<h1 id="mulAsi">Input your assignments for the week:</h1>
-<h1 style="display:none" id="oneAsi">Input Your Assignment:</h1>
 
-    <input id="input" placeholder="1-3 math worksheet">
-    <button class="btn btn-primary" id="blue" onclick="addElement()" >Add Assignment</button> 
+<h1 id="mulAsi">Input your assignments for the week <b>one at a time:</b></h1>
+<h1 style="display:none" id="oneAsi">Input the name of your assignment</h1>
+<p>Press next when you've added all the assignments you want to put in your schedule</p>
 
-    <button style="display:none" id="blue2" onclick="addElement();" >input</button> 
+    <input id="input" placeholder="english assignment">
+    <button class="btn btn-primary" id="blue" onclick="addElement()">Add Assignment</button> 
+
+    <button style="display:none" id="blue2" onclick="addElement();">Input</button> 
 
     <h1 height="30px"></h1>
 
@@ -82,7 +84,12 @@
   <button class="btn btn-danger" id="closeAddAssignmentBtn" onclick="closeInputA();" style="display:none">Close</button>
 
   <center>
+
 <img src="https://docs.google.com/drawings/d/e/2PACX-1vSMsuI6Xo_xVRKBKcTa_LsYjlXEPe_zlH9kdbGMb8phejW9m4MZdpci1hSob-bq03bXkGGTNKT2YtJ0/pub?w=200&amp;h=200">
+
+    <p>Your assignments will be shown here, (you can drag them around!):</p>
+
+
 </center>
 </center>
 </header>
@@ -130,11 +137,10 @@ Drag assignments here to delete them
 </header>
 </center>
 
-    <p>Now make your schedule for the week!</p>
     <ul>
       <li>Order your assignments by draging them to the time you'd like to do them.</li>
       <li>Double click the time cells to edit the time</li>
-      <li>Double click your assignment to edit it, drag it to the delete square to delete</li>
+      <li>Drag an assignment to the delete square to delete</li>
     </ul>
 
 </body> 
@@ -217,7 +223,13 @@ Drag assignments here to delete them
 </table>
 </header>
 
-<header id="botLinkHeader">
+<center><button onclick="addTr()" class="btn btn-info">Add row</button></center>
+<h2>
+  Drag your assignments to the time you want to do them:
+</h2>
+
+
+<!---<header id="botLinkHeader">
     <p>Study Bot Links: (Drag them to when you want to use them with an assignment. Note: You need to drag an assignment to a time before you can drag a study bots!)</p>
   <div id="ITHBLink"><a href='https://sprz05.github.io/ITHIB_v1.0/ITHB.html' target='_blank'>Use ITHB</a></div>
   <div id="HOBLink"><a href='https://sprz05.github.io/HOBv1.0/' target='_blank'>Use HOB</a></div>
@@ -225,9 +237,12 @@ Drag assignments here to delete them
   <div id="SLABLink"><a href='https://sprz05.github.io/SLAB_v1.0/' target='_blank'>Use SLAB</a></div>
   <div id="BHOBLink"><a href='https://sprz05.github.io/ITHIB_v1.0/bingoBot9.html' target='_blank'>Use BHOB</a></div>
 
-</header>
+</header>--->
 
-<center><button onclick="addTr()" class="btn btn-info">Add row</button></center>
+
+<!-- Latest compiled and minified JavaScript -->
+
+
 
 
 </header>
@@ -236,3 +251,49 @@ Drag assignments here to delete them
      <script src="script.js"></script>
 
 </header>
+
+
+<style>
+#mySidenav a {
+  position: absolute;
+  left: -60px;
+  transition: 0.3s;
+  padding: 15px;
+  width: 100px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  border-radius: 0 5px 5px 0;
+}
+
+#mySidenav a:hover {
+  left: 0;
+}
+
+#about {
+  top: 20px;
+  background-color: #4CAF50;
+}
+
+#blog {
+  top: 80px;
+  background-color: #2196F3;
+}
+
+#projects {
+  top: 20px;
+  background-color: #f44336;
+}
+
+#contact {
+  top: 200px;
+  background-color: #555
+}
+</style>
+</head>
+<body>
+
+<div id="mySidenav" class="sidenav">
+
+  <a href="#" target="_blank" id="projects">Walk Through</a>
+</div>
