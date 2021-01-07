@@ -120,18 +120,18 @@ function addElement() {
         //$(newDiv).addClass($("#" + currentlyDragged).attr("data-id"));
         $( this ).append(newDiv);
  
-        console.log(currentlyDragged)
 
         $("div").draggable({
         drag: function(e) {
 
         currentlyDraggedNewDiv = e.target;
         text = $(currentlyDraggedNewDiv).html();
-        console.log(currentlyDraggedNewDiv);
 
       }
     }); 
         $("#" + currentlyDragged).remove();
+       $(currentlyDraggedNewDiv).remove();
+
       } 
     });
 
@@ -443,6 +443,7 @@ window.addEventListener('load', (event) => {
       }
     }); 
         $(currentlyDraggedNewDiv).remove();
+            $(currentlyDragged).remove();
       }
     });
 
