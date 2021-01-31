@@ -22,6 +22,7 @@
   <script src= 
 "https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"> 
   </script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 
 
   </head>
@@ -29,7 +30,7 @@
 
 <header id="CheckSnap" style="display:none;">
   <h1>Sweet! How would you like to save your schedule?</h1>
-  <button onclick="takeshot(); showSnap();" class="btn btn-success" style="width: 200px;">Save schedule with screenshot</button>
+  <button style="display:none" onclick="takeScreenShot();" class="btn btn-success" style="width: 200px;">Save schedule with screenshot</button>
   <a href="index.html"><button style="width: 200px;"  class="btn btn-primary">Save Schedule as website</button></a>
   <button onclick="goBackToMain();" style="width: 200px;"  class="btn btn-danger">No, go back</button>
 </header>
@@ -40,24 +41,24 @@
  <header id="output" height:></header> 
 </header>
 
-  <script type="text/javascript"> 
-    // Define the function 
-    // to screenshot the div 
-    function takeshot() { 
-      let header = document.getElementById('photo'); 
 
-      // Use the html2canvas 
-      // function to take a screenshot 
-      // and append it 
-      // to the output div 
-      html2canvas(header).then( 
-        function (canvas) { 
-          document 
-          .getElementById('output') 
-          .appendChild(canvas); 
-        }) 
-    } 
-  </script> 
+  <script>
+  var takeScreenShot = function() {
+  html2canvas(document.getElementById("photo"), {
+    onrendered: function(canvas) {
+        var tempcanvas = document.createElement('canvas');
+        tempcanvas.width=465;
+        tempcanvas.height=524;
+        var context=tempcanvas.getContext('2d');
+        context.drawImage(canvas,465,40,465,524,0,0,465,524);
+        var link=document.createElement("a");
+        link.href=canvas.toDataURL('image/jpg');
+        link.download = 'screenshot.jpg';
+        link.click();
+    }
+  });
+}
+</script>
 
 
   <body>

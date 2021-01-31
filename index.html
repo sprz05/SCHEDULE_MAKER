@@ -72,6 +72,7 @@
 
 <a href="https://airtable.com/shrEOEMlJ55M5ksAs" target="_blank"><button id="popup" class="feedback-button">Feedback</button></a>
 <script src="_include/js/feedback.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 
 
 
@@ -88,7 +89,7 @@
 
 <a href="schedule.html"><button class="btn btn-primary" id="newSched" onclick="alertCarful()">New Schedule</button></a>
 <a href="edit.html"><button class="btn btn-danger" id="editBtn">Edit this schedule</button></a>
-<button id="screenShotBtn" class="btn btn-warning" style="color:white" onclick="takeshot()">Take Screenshot of this schedule</button>
+<button id="screenShotBtn" class="btn btn-warning" style="color:white" onclick="takeScreenShot()">Take Screenshot of this schedule</button>
 
 <script>
   function alertCarful(){
@@ -105,31 +106,26 @@
 </body>
 </center>
 
-<header id="screenShotHeader" style="display:none;">
- <h1 id="screenshotTxt">Screenshot:</h1> 
- <p id="saveSchedTxt">It might take a while for your screenshoot to be displayed. When it's ready, right click to save your schedule as an image. (Chromebook users: ctrl + alt *click* image)</p>
- <header id="output" height:></header> 
-</header>
 
-  <script type="text/javascript"> 
-    // Define the function 
-    // to screenshot the div 
-    function takeshot() { 
-      document.getElementById("screenShotHeader").style.display ="block";
-      let header = document.getElementById('tableInIndex'); 
 
-      // Use the html2canvas 
-      // function to take a screenshot 
-      // and append it 
-      // to the output div 
-      html2canvas(header).then( 
-        function (canvas) { 
-          document 
-          .getElementById('output') 
-          .appendChild(canvas); 
-        }) 
-    } 
-  </script> 
+<script>
+  var takeScreenShot = function() {
+  html2canvas(document.getElementById("tableInIndex"), {
+    onrendered: function(canvas) {
+        var tempcanvas = document.createElement('canvas');
+        tempcanvas.width=465;
+        tempcanvas.height=524;
+        var context=tempcanvas.getContext('2d');
+        context.drawImage(canvas,465,40,465,524,0,0,465,524);
+        var link=document.createElement("a");
+        link.href=canvas.toDataURL('image/jpg');
+        link.download = 'screenshot.jpg';
+        link.click();
+    }
+  });
+}
+</script>
+
 
 
 <script>
